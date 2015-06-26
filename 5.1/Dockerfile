@@ -8,14 +8,13 @@ ENV SONARQUBE_HOME /opt/sonarqube
 EXPOSE 9000
 
 # H2 Database port
-EXPOSE 5432
+EXPOSE 9092
 
 # Database configuration
 # Defaults to using H2
 ENV SONARQUBE_JDBC_USERNAME sonar
 ENV SONARQUBE_JDBC_PASSWORD sonar
-#ENV SONARQUBE_JDBC_URL jdbc:h2:tcp://localhost:9092/sonar
-ENV SONARQUBE_JDBC_URL=jdbc:postgresql://localhost:5432/sonar
+ENV SONARQUBE_JDBC_URL jdbc:h2:tcp://localhost:9092/sonar
 
 ENV SONAR_VERSION 5.1
 
@@ -35,7 +34,7 @@ RUN set -x \
 	&& rm sonarqube.zip* \
 	&& rm -rf $SONARQUBE_HOME/bin/* 
   
-COPY sonar-javascript-plugin-2.6.jar $SONARQUBE_HOME/extensions/plugins/sonar-javascript-plugin-2.6.jar
+ADD sonar-javascript-plugin-2.6.jar $SONARQUBE_HOME/extensions/plugins/sonar-javascript-plugin-2.6.jar
 
 WORKDIR $SONARQUBE_HOME
 COPY run.sh $SONARQUBE_HOME/bin/
