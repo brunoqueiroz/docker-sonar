@@ -1,10 +1,11 @@
 sonarqube:
-  image: "redsparkrp/sonarqube:5.1"
+  #image: "redsparkrp/sonarqube:5.1"
+  build: "5.1"
   ports:
    - "9000:9000"
    - "5432:5432"
-  #environment:
-  # - SONARQUBE_JDBC_URL=jdbc:postgresql://localhost:5432/sonar
+  environment:
+   - SONARQUBE_JDBC_URL=jdbc:postgresql://localhost:5432/sonar
 
 db:
   image: postgres
