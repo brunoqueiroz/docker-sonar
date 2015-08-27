@@ -1,6 +1,6 @@
 sonarqube:
   #image: "redsparkrp/sonarqube:5.1"
-  build: "5.1"
+  build: "5.1.2"
   ports:
    - "80:9000"
    - "5432:5432"
