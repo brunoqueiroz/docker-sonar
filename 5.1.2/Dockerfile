@@ -36,6 +36,8 @@ RUN set -x \
 
 VOLUME ["$SONARQUBE_HOME/data", "$SONARQUBE_HOME/extensions"]
 
+ADD sonar-javascript-plugin-2.6.jar $SONARQUBE_HOME/extensions/plugins/sonar-javascript-plugin-2.6.jar
+
 WORKDIR $SONARQUBE_HOME
 COPY run.sh $SONARQUBE_HOME/bin/
 ENTRYPOINT ["./bin/run.sh"]
